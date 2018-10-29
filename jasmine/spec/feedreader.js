@@ -9,7 +9,7 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
-    /* This is our first test suite - a test suite just contains
+    /* This is our first test suite - a test suite just containsgit 
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
     */
@@ -62,7 +62,7 @@ $(function() {
              expect(body.className).toBe(hideClass);
          });
 
-         /* Itensures that menu changes
+         /* It ensures that menu changes
           * visibility when the menu icon is clicked. 
           */
          it('changes visibility when menu icon is clicked', function(){
@@ -79,7 +79,7 @@ $(function() {
             loadFeed(0, done);
         });
 
-        /* It ensures  that there is at least
+        /* It ensures that there is at least
          * a single .entry element within the .feed container.
          */
         it('are loaded', function(){
@@ -105,8 +105,9 @@ $(function() {
             });
         });
 
-        /* Test that ensures when a new feed is loaded
+        /* It ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
+         * It compares two feed data to ensure they are not same.
          */
         it('contents changes', function () {
             expect(f1 === f2).not.toBe(true);
