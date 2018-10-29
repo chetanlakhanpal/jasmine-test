@@ -33,6 +33,7 @@ $(function() {
         it('URLs are defined', function(){
             allFeeds.forEach(feed => {
               expect(feed.url).toBeDefined();
+              expect(feed.url.length).not.toBe(0);
             });
         });
 
@@ -42,7 +43,7 @@ $(function() {
         it('Names are defined and is not empty', function () {
             allFeeds.forEach(feed => {
                 expect(feed.name).toBeDefined();
-                expect(feed.name).not.toBe('');
+                expect(feed.name.length).not.toBe(0);
             });
         });
     });
@@ -52,14 +53,13 @@ $(function() {
 
         const menuIcon = document.querySelector('.menu-icon-link');
         const body = document.querySelector('body');
-        const hideClass = 'menu-hidden';
         const EVENT = new Event('click');
 
         /* It ensures the menu element is
          * hidden by default. 
          */
          it('is hidden by default', function () {
-             expect(body.className).toBe(hideClass);
+             expect(body.classList.contains("menu-hidden")).toBe(true);
          });
 
          /* It ensures that menu changes
@@ -67,9 +67,9 @@ $(function() {
           */
          it('changes visibility when menu icon is clicked', function(){
              menuIcon.dispatchEvent(EVENT);
-             expect(body.className).not.toBe(hideClass);
+             expect(body.classList.contains('menu-hidden')).not.toBe(true);
              menuIcon.dispatchEvent(EVENT);
-             expect(body.className).toBe(hideClass);
+             expect(body.classList.contains("menu-hidden")).toBe(true);
          })
     });
 
@@ -83,12 +83,7 @@ $(function() {
          * a single .entry element within the .feed container.
          */
         it('are loaded', function(){
-            const feed = document.querySelector('.feed');
-            const firstChild = function(){
-                return feed.children[0].querySelector(".entry");
-            } 
-            expect(firstChild).not.toThrow();
-            expect(firstChild).toBeDefined();
+            expect(document.querySelector(".feed .entry")).not.toBe(null);
         });
     });
 
